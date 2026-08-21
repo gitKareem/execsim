@@ -1,0 +1,10 @@
+{
+  // IMPORTANT: this name must exactly match the Worker name in your
+  // Cloudflare dashboard, or every build will fail.
+  "name": "execsim",
+  "compatibility_date": "2026-08-01",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "single-page-application"
+  }
+}
