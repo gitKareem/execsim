@@ -2,9 +2,25 @@
   // IMPORTANT: this name must exactly match the Worker name in your
   // Cloudflare dashboard, or every build will fail.
   "name": "execsim",
-  "compatibility_date": "2026-08-01",
+  "compatibility_date": "2026-08-23",
+  "main": "./src/index.js",
   "assets": {
     "directory": "./public",
-    "not_found_handling": "single-page-application"
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    // The Worker only runs for the leaderboard API. Every other request is
+    // served straight from the asset store, so the game itself is unaffected
+    // by anything happening in src/index.js.
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "execsim-scores",
+      "database_id": "074bbfcf-3656-42ff-b90c-8ffd2d6efde2"
+    }
+  ],
+  "observability": {
+    "enabled": true
   }
 }
